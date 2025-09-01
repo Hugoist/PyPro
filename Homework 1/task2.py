@@ -1,24 +1,24 @@
 class Rectangle:
     """Class representing a rectangle"""
 
-    def __init__(self, width, height):
+    def __init__(self, width: float, height: float) -> None:
         """Initialize a rectangle with width and height"""
         self.width = width
         self.height = height
 
-    def area(self):
+    def area(self) -> float:
         """Return the area of the rectangle"""
         return self.width * self.height
 
-    def perimeter(self):
+    def perimeter(self) -> float:
         """Return the perimeter of the rectangle"""
         return 2 * (self.width + self.height)
 
-    def is_square(self):
+    def is_square(self) -> bool:
         """Return True if rectangle is a square, else False"""
         return self.width == self.height
 
-    def resize(self, new_width, new_height):
+    def resize(self, new_width: float, new_height: float) -> None:
         """Change width and height of the rectangle"""
         self.width = new_width
         self.height = new_height
