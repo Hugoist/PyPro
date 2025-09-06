@@ -61,7 +61,8 @@ class Vector:
             raise ValueError("Vectors must have same dimensions")
 
     def length(self) -> float:
-        # Magnitude of vector
+        # Get magnitude of vector
+
         return math.sqrt(sum(a ** 2 for a in self.coords))
 
 

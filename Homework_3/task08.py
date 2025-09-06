@@ -11,24 +11,38 @@ class Price:
         self.amount = self._round_to_cents(Decimal(amount))
 
     def _round_to_cents(self, value: Decimal) -> Decimal:
+        # round price to 2 digits after point
+
         return value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 
     def __add__(self, other: Price) -> Price:
+        # add prices
+
         return Price(self.amount + other.amount)
 
     def __sub__(self, other: Price) -> Price:
+        # subtract prices
+
         return Price(self.amount - other.amount)
 
     def __eq__(self, other: Price) -> bool:
+        # check if prices are equal
+
         return self.amount == other.amount
 
     def __lt__(self, other: Price) -> bool:
+        # check if target price is lower than other
+
         return self.amount < other.amount
 
     def __gt__(self, other: Price) -> bool:
+        # check if target price is higher than other
+
         return self.amount > other.amount
 
     def __repr__(self) -> str:
+        # representing price in Price(amount) format
+
         return f"Price({self.amount})"
 
 
@@ -39,17 +53,21 @@ class PaymentGateway:
         self.balance = initial_balance
 
     def charge(self, amount: Price) -> None:
+        # charging balance
+
         if amount > self.balance:
             raise ValueError("Insufficient funds")
         self.balance -= amount
 
     def deposit(self, amount: Price) -> None:
+        # getting deposit
+
         self.balance += amount
 
 
 p1 = Price(10.231)
 p2 = Price(4.50)
-p3 = Price(9.99)  # 9.99
+p3 = Price(9.99)
 
 print(f"{p1 = }")  # p1 = Price(10.23)
 print(f"{p2 = }")  # p2 = Price(4.50)

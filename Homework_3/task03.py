@@ -4,24 +4,36 @@ from typing import List
 
 
 class Person:
+    """ Simple class for working with person"""
+
     def __init__(self, name: str, age: int) -> None:
         self.name = name
         self.age = age
 
     def __lt__(self, other: Person) -> bool:
+        # Compare if target person is older than other one
+
         return self.age < other.age
 
     def __gt__(self, other: Person) -> bool:
+        # Compare if target person is younger than other one
+
         return self.age > other.age
 
     def __eq__(self, other: Person) -> bool:
+        # Check of target person has same age as other one
+
         return self.age == other.age
 
     def __repr__(self) -> str:
+        # Display person in Person(name, age) format
+
         return f"Person(name={self.name}, age={self.age})"
 
 
 def sorted_persons(persons: List[Person]) -> List[Person]:
+    """sort persons by age"""
+
     return sorted(persons)
 
 
