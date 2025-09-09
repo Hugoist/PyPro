@@ -1,12 +1,18 @@
 class ProductWithGetSet:
+    """ Handling product with getset """
+
     def __init__(self, name: str, price: float):
         self.name = name
         self.price = price
 
     def get_price(self) -> float:
+        # getting price via getter
+
         return self.price
 
     def set_price(self, price: float) -> None:
+        # setting price via setter
+
         self.price = price
 
 
@@ -17,10 +23,14 @@ class ProductWithProperty:
 
     @property
     def price(self) -> float:
+        # getting price via decorator @property
+
         return self._price
 
     @price.setter
     def price(self, price: float) -> None:
+        # setting price via decorator @property
+
         self._price = price
 
 
@@ -29,15 +39,21 @@ class PriceDescriptor:
         self._value = default
 
     def __get__(self, instance: object, owner: type | None) -> float:
+        # getting price descriptor
+
         return self._value
 
     def __set__(self, instance: object, value: float) -> None:
+        # setting price descriptor
+
         if value < 0:
             raise ValueError("Price cannot be negative")
         self._value = value
 
 
 class ProductWithDescriptor:
+    """ Handling product with descriptor """
+
     price: PriceDescriptor = PriceDescriptor()
 
     def __init__(self, name: str, price: float) -> None:

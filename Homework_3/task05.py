@@ -14,15 +14,15 @@ def my_len(iterable: Iterable) -> int:
 def my_sum(iterable: Iterable[int]) -> int:
     """Return the sum of an iterable."""
 
-    reult = 0
+    result = 0
     for item in iterable:
-        reult += item
+        result += item
 
-    return reult
+    return result
 
 
 def my_min(iterable: Iterable[int]) -> int:
-    """Return the minimum value of a iterable."""
+    """Return the minimum value of an iterable."""
 
     iterator = iter(iterable)
     try:

@@ -2,12 +2,16 @@ from __future__ import annotations
 
 
 class BinaryNumber:
+    """ Class for working with strings which represent binary numbers"""
+
     def __init__(self, value: str):
         if not all(val in ("0", "1") for val in value):
             raise ValueError('value must contains 0 or 1 digits')
         self.value = value
 
     def __normalized_values(self, other: BinaryNumber) -> (str, str):
+        # Bring both numbers to same length
+
         max_length = max(len(other.value), len(self.value))
         v1 = self.value.zfill(max_length)
         v2 = other.value.zfill(max_length)
@@ -15,24 +19,29 @@ class BinaryNumber:
 
     def __and__(self, other: BinaryNumber) -> BinaryNumber:
         # Perform bitwise AND
+
         return BinaryNumber(
             "".join("1" if v1 == "1" and v2 == "1" else "0" for v1, v2 in zip(*self.__normalized_values(other))))
 
     def __or__(self, other: BinaryNumber) -> BinaryNumber:
         # Perform bitwise OR
+
         return BinaryNumber(
             "".join("1" if v1 == "1" or v2 == "1" else "0" for v1, v2 in zip(*self.__normalized_values(other))))
 
     def __xor__(self, other: BinaryNumber) -> BinaryNumber:
         # Perform bitwise XOR
+
         return BinaryNumber("".join("1" if v1 != v2 else "0" for v1, v2 in zip(*self.__normalized_values(other))))
 
     def __invert__(self) -> BinaryNumber:
         # Perform bitwise NOT
+
         return BinaryNumber("".join("1" if v == "0" else "0" for v in self.value))
 
     def __repr__(self):
         # String representation
+
         return f"BinaryNumber({self.value})"
 
 
