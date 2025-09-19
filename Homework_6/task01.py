@@ -1,5 +1,7 @@
 class ReverseFileIterator:
-    """Iterator that reads a file from the end """
+    """
+    Iterator that reads a file from the end
+    """
 
     def __init__(self, path: str):
         self.filepath = path
@@ -21,6 +23,6 @@ class ReverseFileIterator:
         self.index -= 1
         return line.rstrip("\n")
 
-
+# test
 for line in ReverseFileIterator("lorem.txt"):
     print(line)
