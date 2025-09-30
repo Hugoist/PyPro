@@ -1,4 +1,4 @@
-from typing import List, Tuple, Union, TypeVar, TypedDict, Protocol, Optional, Dict, Generic, Callable
+from typing import List, Tuple, Union, TypeVar, TypedDict, Protocol, Optional, Generic, Callable
 
 
 # task_01
@@ -31,7 +31,7 @@ print(filter_adults(people))
 # [("Андрій", 25), ("Марія", 19)]
 
 
-# task_04
+# task_03
 T = TypeVar('T')
 
 
@@ -53,7 +53,7 @@ print(parse_input("100"))  # 100
 print(parse_input("hello"))  # None
 
 
-# task_05
+# task_04
 def get_first(data: List[T]) -> Union[T, None]:
     """
     Returns first element of list or None if list is empty
@@ -67,14 +67,41 @@ print(get_first(["a", "b", "c"]))  # "a"
 print(get_first([]))  # None
 
 
+# task_05
+
+def apply_operation(x: int, operation: Callable[[int], int]) -> int:
+    """
+    Applies operation to given integer
+    """
+    return operation(x)
+
+
+def square(x: int) -> int:
+    """ returns square of given integer """
+    return x ** 2
+
+
+def double(x: int) -> int:
+    """ returns double of given integer """
+    return x * 2
+
+
+# tests
+print(apply_operation(5, square))  # 25
+print(apply_operation(5, double))  # 10
+
+
 # task_07
 class User(TypedDict):
+    """  TypedDict represents user object """
     id: int
     name: str
     is_admin: bool
 
 
 class UserDatabase(Protocol):
+    """ Interface for UserDatabase """
+
     def get_user(self, user_id: int) -> Optional[User]:
         """Get user by id"""
 
@@ -83,13 +110,17 @@ class UserDatabase(Protocol):
 
 
 class InMemoryUserDB(UserDatabase):
+    """ Class for working with UserDatabase """
+
     def __init__(self) -> None:
         self._users: Dict[int, User] = {}
 
     def get_user(self, user_id: int) -> Optional[User]:
+        """Get user by id"""
         return self._users.get(user_id)
 
     def save_user(self, user: User) -> None:
+        """Save user to database"""
         self._users[user["id"]] = user
 
 
@@ -99,12 +130,13 @@ if __name__ == "__main__":
     print(db.get_user(1))  # {"id": 1, "name": "Alice", "is_admin": False}
     print(db.get_user(2))  # None
 
-
 # task_08
 T = TypeVar("T")
 
 
 class Processor(Generic[T]):
+    """ Generic processor class for operations with list of items """
+
     def __init__(self, data: List[T]) -> None:
         self.data = data
 
@@ -114,10 +146,12 @@ class Processor(Generic[T]):
 
 
 def double(x: int) -> int:
+    """ Return doubled given integer """
     return x * 2
 
 
 def to_upper(s: str) -> str:
+    """ Convert string to uppercase """
     return s.upper()
 
 
@@ -129,7 +163,6 @@ if __name__ == "__main__":
     p2 = Processor(["hello", "world"])
     print(p2.apply(to_upper))  # ["HELLO", "WORLD"]
 
-
 # task_09
 from typing import final, Dict, Any
 from abc import ABC, abstractmethod
@@ -137,13 +170,11 @@ from abc import ABC, abstractmethod
 
 @final
 class Config:
-
     """Configuration class that cannot be inherited"""
     DATABASE_URL: str = "sqlite:///:memory:"
     MAX_CONNECTIONS: int = 10
 
 
-# Abstract base class
 class BaseRepository(ABC):
     """Abstract base repository defining the interface for saving data"""
 
@@ -153,7 +184,6 @@ class BaseRepository(ABC):
         pass
 
 
-# Concrete implementation of BaseRepository
 class SQLRepository(BaseRepository):
     """SQL repository that implements saving data"""
 

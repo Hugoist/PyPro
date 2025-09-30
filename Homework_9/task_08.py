@@ -5,6 +5,8 @@ T = TypeVar("T")
 
 
 class Processor(Generic[T]):
+    """ Generic processor class for operations with list of items """
+
     def __init__(self, data: List[T]) -> None:
         self.data = data
 
@@ -14,10 +16,12 @@ class Processor(Generic[T]):
 
 
 def double(x: int) -> int:
+    """ Return doubled given integer """
     return x * 2
 
 
 def to_upper(s: str) -> str:
+    """ Convert string to uppercase """
     return s.upper()
 
 

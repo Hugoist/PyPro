@@ -9,10 +9,12 @@ def apply_operation(x: int, operation: Callable[[int], int]) -> int:
 
 
 def square(x: int) -> int:
+    """ returns square of given integer """
     return x ** 2
 
 
 def double(x: int) -> int:
+    """ returns double of given integer """
     return x * 2
 
 

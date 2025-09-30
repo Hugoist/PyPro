@@ -2,12 +2,15 @@ from typing import TypedDict, Protocol, Optional, Dict
 
 
 class User(TypedDict):
+    """  TypedDict represents user object """
     id: int
     name: str
     is_admin: bool
 
 
 class UserDatabase(Protocol):
+    """ Interface for UserDatabase """
+
     def get_user(self, user_id: int) -> Optional[User]:
         """Get user by id"""
 
@@ -16,13 +19,17 @@ class UserDatabase(Protocol):
 
 
 class InMemoryUserDB(UserDatabase):
+    """ Class for working with UserDatabase """
+
     def __init__(self) -> None:
         self._users: Dict[int, User] = {}
 
     def get_user(self, user_id: int) -> Optional[User]:
+        """Get user by id"""
         return self._users.get(user_id)
 
     def save_user(self, user: User) -> None:
+        """Save user to database"""
         self._users[user["id"]] = user
 
 

@@ -9,7 +9,6 @@ class Config:
     MAX_CONNECTIONS: int = 10
 
 
-# Abstract base class
 class BaseRepository(ABC):
     """Abstract base repository defining the interface for saving data"""
 
@@ -19,7 +18,6 @@ class BaseRepository(ABC):
         pass
 
 
-# Concrete implementation of BaseRepository
 class SQLRepository(BaseRepository):
     """SQL repository that implements saving data"""
 
