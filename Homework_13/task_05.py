@@ -1,8 +1,8 @@
 import threading
 
 
-# Function to search for a text in a file
 def search_in_file(filename: str, text: str) -> None:
+    """ Search for a text in a file """
     with open(filename, "r", encoding="utf-8") as f:
         for i, line in enumerate(f, 1):
             if text in line:

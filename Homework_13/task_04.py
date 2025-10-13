@@ -1,15 +1,14 @@
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from socketserver import ThreadingMixIn
-import requests
 
 
-# Allow server to handle multiple clients in threads
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
+    """Allow server to handle multiple clients in threads"""
     pass
 
 
-# Handle HTTP GET requests
 class RequestHandler(SimpleHTTPRequestHandler):
+    """Handle HTTP GET requests """
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/plain; charset=utf-8")

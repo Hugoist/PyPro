@@ -3,12 +3,14 @@ import math
 from functools import reduce
 import operator
 
-# Function to compute factorial for a subrange
-def partial_factorial(start, end):
+
+def partial_factorial(start: int, end: int) -> int:
+    """ Calculate the partial factorial """
     result = 1
     for i in range(start, end + 1):
         result *= i
     return result
+
 
 if __name__ == "__main__":
     n = 100000
@@ -30,4 +32,4 @@ if __name__ == "__main__":
     factorial_result = reduce(operator.mul, partial_results, 1)
     digits = int(math.log10(factorial_result)) + 1
 
-    print(f"Approximate order of factorial: 10^{digits-1}")
+    print(f"Approximate order of factorial: 10^{digits - 1}")

@@ -3,8 +3,8 @@ import random
 from typing import Tuple
 
 
-# Function to simulate one organism's life
 def organism_life(org_id: int) -> Tuple[int, bool, int]:
+    """ Simulate one organism life """
     survived: bool = random.choice([True, False])
     offspring: int = random.randint(0, 3) if survived else 0
     return (org_id, survived, offspring)

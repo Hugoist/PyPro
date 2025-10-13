@@ -1,13 +1,15 @@
 import threading
 import requests
 
-# Function to download one file
+
 def download_file(url: str, filename: str) -> None:
+    """ Downloads one file """
     print(f"Завантаження {filename} розпочато")
     response = requests.get(url)
     with open(filename, "wb") as f:
         f.write(response.content)
     print(f"Завантаження {filename} завершено")
+
 
 # List of files (URLs) to download
 urls = [
