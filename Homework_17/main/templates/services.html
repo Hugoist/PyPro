@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title|upper }}</h1>
+    <ul class="list-group">
+        {% for service in services %}
+            <li class="list-group-item">
+                {{ service.name }} – {{ service.desc|truncatechars:50 }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Немає доступних послуг</li>
+        {% endfor %}
+    </ul>
+    <p>Загалом {{ services|length }} {{ services|length|pluralize:"послуга,послуги" }}</p>
+{% endblock %}

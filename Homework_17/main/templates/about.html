@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title|upper }}</h1>
+    <p>{{ description|truncatechars:50 }}</p>
+    <p>Оновлено: {{ updated|date:"d.m.Y" }}</p>
+{% endblock %}

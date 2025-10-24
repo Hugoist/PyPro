@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title|upper }}</h1>
+    <p>Адреса: {{ address|default:"Не вказано" }}</p>
+    <p>Телефон: <a href="tel:{{ phone }}">{{ phone|default:"Не вказано" }}</a></p>
+    <p>Email: <a href="mailto:{{ email }}">{{ email|default:"Не вказано" }}</a></p>
+{% endblock %}
