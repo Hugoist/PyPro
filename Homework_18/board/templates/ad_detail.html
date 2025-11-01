@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Ad details{% endblock %}
+
+{% block content %}
+<h1>{{ ad.title }}</h1>
+<p>{{ ad.description }}</p>
+<p>Price: {{ ad.price }}</p>
+
+<h2>Comments</h2>
+<ul>
+    {% for comment in comments %}
+    <li>{{ comment.user.user.username }}: {{ comment.content }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
