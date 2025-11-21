@@ -1,0 +1,38 @@
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ SITE_NAME }}</title>
+</head>
+
+<body>
+<header>
+    <h1>{{ SITE_NAME }}</h1>
+
+    {% if MAINTENANCE_MODE %}
+    <div style="color:red">Site under construction</div>
+    {% endif %}
+</header>
+
+<hr>
+
+<nav>
+    <a href="{% url 'article_list' %}">Articles</a> |
+    <a href="{% url 'register' %}">Registration</a>
+</nav>
+
+<hr>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<hr>
+
+<footer>
+    &copy; {% current_year %}
+</footer>
+</body>
+</html>
