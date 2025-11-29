@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow">
+                <div class="card-body text-center">
+
+                    <h1 class="mb-4">{{ greeting }}</h1>
+
+                    {% if not cookies_supported %}
+                    <div class="alert alert-danger">
+                        Увага: у вашому браузері відключені cookie — деякі функції можуть не працювати
+                    </div>
+                    {% endif %}
+
+                    <form action="{% url 'logout' %}" method="post" class="row g-3">
+                        {% csrf_token %}
+                        <div class="col-12 text-end">
+                            <button class="btn btn-primary">Exit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
