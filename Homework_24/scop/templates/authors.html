@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Authors{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Authors with more than 10 reviews</h2>
+
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Review Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for author in authors %}
+        <tr>
+            <td>{{ author.0 }}</td>
+            <td>{{ author.1 }}</td>
+            <td>{{ author.2 }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No authors found</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-4">
+        <h5>Total number of books: {{ total_books }}</h5>
+    </div>
+</div>
+
+<a href="/" class="btn btn-link">← Back to Home</a>
+{% endblock %}

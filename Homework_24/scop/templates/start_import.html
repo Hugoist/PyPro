@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Import Books{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Import Books from CSV</h2>
+
+<form method="post" enctype="multipart/form-data" class="row g-3">
+    {% csrf_token %}
+
+    <div class="col-md-3">
+        <label class="form-label">
+            CSV File
+            <input type="file" name="file" class="form-control" required>
+        </label>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">
+            Your Email
+            <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+        </label>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">
+            Your Email
+            <select name="backend" class="form-select mb-3" required>
+                <option value="sql">SQL</option>
+                <option value="mongo">MongoDB</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="col-12 text-end">
+        <button class="btn btn-primary">Start Import</button>
+    </div>
+</form>
+
+<a href="/" class="btn btn-link">← Back to Home</a>
+{% endblock %}
